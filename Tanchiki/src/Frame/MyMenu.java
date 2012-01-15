@@ -3,6 +3,8 @@ package Frame;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -104,18 +106,28 @@ public class MyMenu extends Application
              exitGame.setLayoutX(1000);
              exitGame.setLayoutY(600);
              root.getChildren().add(exitGame);
+             
+             ActionButton();
            
     }
     /*в етом методе я предаю действия кнопкам*/
     private void ActionButton()
     {
-        
+        exitGame.setOnAction(new EventHandler<ActionEvent>()
+        {
+
+                public void handle(ActionEvent e)
+                {
+                    primaryStage.close();
+                }
+        });
     }
     public void start(Stage primaryStage)
     {
+        this.primaryStage = primaryStage;
         init(primaryStage);
         primaryStage.show();
-        primaryStage.close();
+        
     }
     public static void main(String[] args)
     {
