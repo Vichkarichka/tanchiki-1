@@ -15,10 +15,10 @@ public class Game extends Application
 {
     LinkedList<Tank>        Tanks;
     LinkedList<FireBall>    FireBalls;
-    Location                ThisLocation;
+    Location                ThisLocation; // 
     
-    LettersPane             lettersPane; // устроство клавиатуры
-    Group                   root;        // ...
+    LettersPane             lettersPane;  // устроство клавиатуры
+    Group                   root;         // ...
     
     static Thread           thread_events, // обработка всех событий
                             thread_logic;  // игровые вичисления
@@ -26,7 +26,14 @@ public class Game extends Application
     static boolean          flag_finished_thread_logic; // если true-потоки
     // работают, иначе они заканьчиваються (делают break;)
     
+    // Итерация игрового времени
+    private void GameRun()
+    {
+        
+    }
     
+    // Инициализация фрейма, создание первое сцены, и потоков обработки событий
+    // и потока игрвоых вичислений(он вызывает метод GameRun)
     private void init(Stage primaryStage)
     {
         root        = new Group();
@@ -34,8 +41,6 @@ public class Game extends Application
         root.getChildren().add(lettersPane);
         
         primaryStage.setScene(new Scene(root,480,480));
-        primaryStage.fullScreenProperty();   // задали полный экран(поидеи)
-        //primaryStage.
         
         thread_events = new Thread(new Runnable()
         {
@@ -51,7 +56,7 @@ public class Game extends Application
             {
                 while(flag_finished_thread_logic)
                 {
-                    
+                    GameRun();
                 }
             }
         });
@@ -95,10 +100,12 @@ public class Game extends Application
         lettersPane.requestLayout();
     }
     
+    // Класс который обрабатывает события с клавиатуры
     public static class LettersPane extends Region
     {
         public LettersPane() 
         {           
+            // Обработка событий клавиатуры
             setOnKeyPressed(new EventHandler<KeyEvent>()
             {
                 public void handle(KeyEvent ke)
