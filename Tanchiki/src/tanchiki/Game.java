@@ -33,8 +33,6 @@ public class Game extends Application
         lettersPane = new LettersPane();
         root.getChildren().add(lettersPane);
         
-        flag_finished_thread_logic  = true;
-        
         primaryStage.setScene(new Scene(root,480,480));
         primaryStage.fullScreenProperty();   // задали полный экран(поидеи)
         //primaryStage.
@@ -44,6 +42,17 @@ public class Game extends Application
             public void run() 
             {
                 lettersPane.requestFocus();
+            }
+        });
+        
+        thread_logic = new Thread(new Runnable()
+        {
+            public void run()
+            {
+                while(flag_finished_thread_logic)
+                {
+                    
+                }
             }
         });
         
@@ -61,15 +70,14 @@ public class Game extends Application
     // Запуск потоков игры
     public void GameStart() 
     {
-        ////
-        ////
+        flag_finished_thread_logic  = true;
+        thread_logic.start();
     }
     
     // Остановка потоков игры
     public void GameStop() 
     {
-        ////
-        ////
+        flag_finished_thread_logic  = false;
     }
 
     // Начало программы

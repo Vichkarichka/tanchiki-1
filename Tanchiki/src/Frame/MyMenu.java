@@ -43,7 +43,7 @@ public class MyMenu extends Application
         Scene scene = new Scene(root,dimension.getWidth(),dimension.getWidth());
         primaryStage.setScene(scene);
         primaryStage.setFullScreen(true);
-        Image background = new Image(Constants.Pasha_Root_Bacground,dimension.getWidth(),dimension.getWidth(),false,false);
+        Image background = new Image(Constants.Baizor_Root_Background,dimension.getWidth(),dimension.getWidth(),false,false);
         ImageView image = new ImageView();
         image.setImage(background);   
         root.getChildren().add(image);
