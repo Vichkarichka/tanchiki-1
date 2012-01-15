@@ -1,7 +1,5 @@
 package tanchiki;
 
-
-
 import java.util.LinkedList;
 import javafx.application.Application;
 import javafx.event.EventHandler;
