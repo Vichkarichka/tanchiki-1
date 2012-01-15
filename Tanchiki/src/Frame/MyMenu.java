@@ -18,10 +18,10 @@ import tanchiki.Constants;
 public class MyMenu extends Application 
 {
     Group root;
-   
+    GridPane  paneButton;
     /*Создаем поле dimension каторое отвечает за размер екрана*/
     Dimension dimension;
-  
+    Image background;
     Button startGame,
            exitGame,
            saveGame,
@@ -32,7 +32,7 @@ public class MyMenu extends Application
     
     
     /*В этом методе мы создаем меню и делаем с ней все действия*/
-    public void init(Stage primaryStage)
+    private void init(Stage primaryStage)
     {
         
         
@@ -40,16 +40,74 @@ public class MyMenu extends Application
         dimension = Toolkit.getDefaultToolkit().getScreenSize();
         root = new Group();
         /*Создаем фрейм в катором размеры екрана dimension.getWidth(),dimension.getHeight()*/
-        Scene scene = new Scene(root,dimension.getWidth(),dimension.getWidth());
+        Scene scene = new Scene(root,dimension.getWidth(),dimension.getHeight());
         primaryStage.setScene(scene);
-        primaryStage.setFullScreen(true);
-        Image background = new Image(Constants.Baizor_Root_Background,dimension.getWidth(),dimension.getWidth(),false,false);
+        if(dimension.getWidth()/dimension.getHeight()==4/3)
+        {
+             //background = new Image(Constants.Pasha_Root_Bacground,dimension.getWidth()
+                   // ,dimension.getHeight(),false,false);
+        }
+        else
+        {
+             background = new Image(Constants.Pasha_Root_Background,dimension.getWidth()
+                ,dimension.getHeight(),false,false);
+        }
+        primaryStage.setFullScreen(true);     
+        
         ImageView image = new ImageView();
         image.setImage(background);   
-        root.getChildren().add(image);
+        root.getChildren().add(image);    
         
+        button();
         
-        
+       
+    }
+    /*В этом методе я создаю и розмещаю кнопки */
+    private void button()
+    {
+         paneButton = new GridPane();
+          
+          startGame = new Button("START");
+           exitGame = new Button("EXIT");
+           saveGame = new Button("SAVE");
+           loadGame = new Button("LOAD");
+             option = new Button("OPTION");   
+             garage = new Button("GARAGE");
+           
+             startGame.setMinSize(150, 75);
+             startGame.setLayoutX(1000);
+             startGame.setLayoutY(100);
+             root.getChildren().add(startGame);
+             
+             garage.setMinSize(150, 75);
+             garage.setLayoutX(1000);
+             garage.setLayoutY(200);
+             root.getChildren().add(garage);
+             
+             loadGame.setMinSize(150, 75);
+             loadGame.setLayoutX(1000);
+             loadGame.setLayoutY(300);
+             root.getChildren().add(loadGame);
+             
+             saveGame.setMinSize(150, 75);
+             saveGame.setLayoutX(1000);
+             saveGame.setLayoutY(400);
+             root.getChildren().add(saveGame);
+             
+             option.setMinSize(150, 75);
+             option.setLayoutX(1000);
+             option.setLayoutY(500);
+             root.getChildren().add(option);
+             
+             exitGame.setMinSize(150, 75);
+             exitGame.setLayoutX(1000);
+             exitGame.setLayoutY(600);
+             root.getChildren().add(exitGame);
+           
+    }
+    /*в етом методе я предаю действия кнопкам*/
+    private void ActionButton()
+    {
         
     }
     public void start(Stage primaryStage)
