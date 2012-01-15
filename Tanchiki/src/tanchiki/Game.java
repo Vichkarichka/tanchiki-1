@@ -77,10 +77,17 @@ public class Game extends Application
     }
     
     // Конец программы
-    public void stop()
+    public void stop() 
     {
-        thread_events.stop();
-        thread_events.destroy();
+        try
+        {
+            thread_events.stop();
+            thread_events.destroy();
+        }
+        catch(Exception e)
+        {
+            System.out.print("Hello");
+        }
     }
     
     public static class LettersPane extends Region
