@@ -23,6 +23,9 @@ public class Game extends Application
     static Thread           thread_events, // обработка всех событий
                             thread_logic;  // игровые вичисления
     
+    static boolean          flag_finished_thread_logic; // если true-потоки
+    // работают, иначе они заканьчиваються (делают break;)
+    
     
     private void init(Stage primaryStage)
     {
@@ -30,13 +33,15 @@ public class Game extends Application
         lettersPane = new LettersPane();
         root.getChildren().add(lettersPane);
         
+        flag_finished_thread_logic  = true;
+        
         primaryStage.setScene(new Scene(root,480,480));
         primaryStage.fullScreenProperty();   // задали полный экран(поидеи)
         //primaryStage.
         
         thread_events = new Thread(new Runnable()
         {
-           public void run() 
+            public void run() 
             {
                 lettersPane.requestFocus();
             }
@@ -77,17 +82,9 @@ public class Game extends Application
     }
     
     // Конец программы
-    public void stop() 
+    public void stop()
     {
-        try
-        {
-            thread_events.stop();
-            thread_events.destroy();
-        }
-        catch(Exception e)
-        {
-            System.out.print("Hello");
-        }
+        lettersPane.requestLayout();
     }
     
     public static class LettersPane extends Region
