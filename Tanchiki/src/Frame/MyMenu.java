@@ -19,6 +19,7 @@ public class MyMenu extends Application
 {
     Group root;
     GridPane  paneButton;
+    Stage primaryStage;
     /*Создаем поле dimension каторое отвечает за размер екрана*/
     Dimension dimension;
     Image background;
@@ -60,7 +61,7 @@ public class MyMenu extends Application
         
         button();
         
-       
+        
     }
     /*В этом методе я создаю и розмещаю кнопки */
     private void button()
@@ -114,6 +115,7 @@ public class MyMenu extends Application
     {
         init(primaryStage);
         primaryStage.show();
+        primaryStage.close();
     }
     public static void main(String[] args)
     {
