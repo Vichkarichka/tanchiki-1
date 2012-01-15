@@ -8,29 +8,34 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import tanchiki.tank_Components.Body;
 
-public class Tank {    
+public class Tank 
+{    
     Body                    body;
     
     LinkedList<FireBall>    FireBalls;
     
     // -------------------------------------- Constructors ------------------ //
-    public Tank(ObservableList<Node> list, int x, int y) {
+    public Tank(ObservableList<Node> list, int x, int y) 
+    {
         init(list);
         body.setPosition(x, y);
     }
     // -------------------------------------------------------------------------
     
-    void init(ObservableList<Node> list) {
+    void init(ObservableList<Node> list) 
+    {
         body        = new Body(list);
         FireBalls   = new LinkedList<>();
     }
     
     
     // -------------------------------------- Game Functions ---------------- //
-    public void fire() {
+    public void fire() 
+    {
         
     }
-    public void run() { 
+    public void run() 
+    { 
         body.run();
         Iterator<FireBall> It = FireBalls.iterator();
         for(int q=0; q<FireBalls.size(); q++)
