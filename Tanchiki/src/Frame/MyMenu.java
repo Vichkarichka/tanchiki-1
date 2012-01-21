@@ -22,44 +22,43 @@ import tanchiki.Constants;
 
 public class MyMenu extends Application 
 {
-    private Group root;
-   // GridPane  paneButton;
-    public  Stage primaryStage;
-    /*Создаем поле dimension каторое отвечает за размер екрана*/
-   public  Dimension dimension;
-    private Image background;
-    Scene scene;
-   private  Button startGame,
-           exitGame,
-           saveGame,
-           loadGame,
-           option,
-           garage,
-           connectAccount;
+    Group       root;
+    GridPane    paneButton;
+    Stage       primaryStage;
+
+    Dimension   dimension;
+    Image       background;
+    Button      startGame,
+                exitGame,
+                saveGame,
+                loadGame,
+                option,
+                garage,
+                connectAccount;
+
+   Scene scene;
+
    
     
     
     /*В этом методе мы создаем меню и делаем с ней все действия*/
     public void init(Stage primaryStage)
     {
-        
         this.primaryStage = primaryStage;
         Menu();
-        
-        
     }
     public void Menu()
     {
         /*Возвращаем размер екрана*/
         dimension = Toolkit.getDefaultToolkit().getScreenSize();
         root = new Group();
-        /*Создаем фрейм в катором размеры екрана dimension.getWidth(),dimension.getHeight()*/
+        /*Создаем фрейм в катором размеры екрана dimension2.getWidth(),dimension2.getHeight()*/
         scene  = new Scene(root,dimension.getWidth(),dimension.getHeight());
         primaryStage.setScene(scene);
         if(dimension.getWidth()/dimension.getHeight()==4/3)
         {
-             //background = new Image(Constants.Pasha_Root_Bacground,dimension.getWidth()
-                   // ,dimension.getHeight(),false,false);
+             //background = new Image(Constants.Pasha_Root_Bacground,dimension2.getWidth()
+                   // ,dimension2.getHeight(),false,false);
         }
         else
         {
