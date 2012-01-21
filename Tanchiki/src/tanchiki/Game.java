@@ -1,6 +1,7 @@
 package tanchiki;
 
 import Frame.Menu;
+import Frame.Registration;
 import java.util.HashMap;
 import java.util.Iterator;
 import javafx.application.Application;
@@ -9,25 +10,37 @@ import javafx.stage.Stage;
 
 public class Game extends Application
 {
-    HashMap<String,SuperScene>      Locations; // 
-    
-    Thread                          thread_logic; // игровые вичисления
-                            
-    boolean                         flag_finished_thread_logic; // если true-потоки
+    HashMap<String,SuperScene>      Scenes; // Map сцен, для удобной динамической смены
+    Thread                          thread_logic; // игровые вичисления               
+    boolean                         flag_finished_thread_logic,
+                                    flag_finished_thread_game; // если true-потоки
     // работают, иначе они заканьчиваються (делают break;)
     
     // Итерация игрового времени
     private void GameRun()
     {
-        
+        flag_finished_thread_game = true;
+        while(flag_finished_thread_game)
+        {
+            
+        }
     }
     
-    // Инициализация фрейма, создание первое сцены, и потоков обработки событий
-    // и потока игровых вичислений(он вызывает метод GameRun)
+    /*
+      Инициализация фрейма, создание первое сцены, и потоков обработки событий
+      и потока игровых вичислений(он вызывает метод GameRun)
+       
+         ! ! ! 
+         ! ! ! Здесь надо создавать все объекты классов которые наследуються от 
+         ! ! ! SuperScene
+         ! ! !
+    */
     private void init(Stage primaryStage)
     {        
-        Locations.put("Menu",new Menu());
-        primaryStage.setScene(Locations.get("Menu").getScene());
+        Scenes.put("Menu",new Menu());
+        Scenes.put("Registration", new Registration());
+        
+        primaryStage.setScene(Scenes.get("Menu").getScene());
         
         thread_logic = new Thread(new Runnable()
         {
@@ -39,15 +52,12 @@ public class Game extends Application
                 }
             }
         });
-        
-        
     }
     
     public Game() 
     {
-        Locations    = new HashMap<String,SuperScene>();
+        Scenes    = new HashMap<String,SuperScene>();
     }
-    
     
     // Запуск потоков игры
     public void GameStart() 
@@ -72,14 +82,13 @@ public class Game extends Application
     // Конец программы
     public void stop()
     {
-        Iterator<SuperScene> It = Locations.values().iterator();
+        Iterator<SuperScene> It = Scenes.values().iterator();
         for(int q=0; It.hasNext(); q++)
         {
             It.next().stop();            
         }
     }
     
-
     public static void main(String[] args)
     { 
         launch(args); 
