@@ -10,17 +10,20 @@ import javafx.scene.paint.Color;
 
 abstract public class SuperScene
 {
-    protected Scene         World;  
+    protected Scene         World;
     protected LettersPane   lettersPane;  // устроство клавиатуры
     protected Group         root;         // ...
     
     protected Thread        thread_events; // обработка всех событий
     protected int           height,
                             width;
+    protected boolean       DisplayFormat4x3,
+                            fullScreen;
     
     // Задаем размер окна, и отлавливатель событий
     public void init(boolean fullScreen, int width, int height, LettersPane lettersPane_buf)
     {
+        this.fullScreen = fullScreen;
         this.height = height;
         this.width  = width;
         root        = new Group();
@@ -28,6 +31,9 @@ abstract public class SuperScene
         lettersPane = lettersPane_buf;
         // добавляем этот объект к остальным компонентам сцены
         root.getChildren().add(lettersPane);
+        
+        DisplayFormat4x3 = (float) Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 
+                (float) Toolkit.getDefaultToolkit().getScreenSize().getHeight() == 4f / 3f;
                 
         if(fullScreen)
         {
@@ -50,9 +56,13 @@ abstract public class SuperScene
     // Задаем размер окна
     public void init(boolean fullScreen, int width, int height)
     {
+        this.fullScreen = fullScreen;
         this.height = height;
         this.width  = width;
-        root        = new Group();        
+        root        = new Group();   
+        
+        DisplayFormat4x3 = (float)Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 
+                (float) Toolkit.getDefaultToolkit().getScreenSize().getHeight() == 4f / 3f;
         
         if(fullScreen)
         {
@@ -69,7 +79,8 @@ abstract public class SuperScene
     }
     public void stopEventScanner()
     {
-        lettersPane.requestLayout();
+        if(lettersPane != null)
+            lettersPane.requestLayout();
     }
     public void startEventScanner()
     {

@@ -12,7 +12,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
 import tanchiki.Constants;
 import tanchiki.SuperScene;
 
@@ -31,20 +30,21 @@ public class Menu extends SuperScene
     public Menu()
     {
         /*Возвращаем размер екрана*/
-        dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        root = new Group();
+        //dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        //root = new Group();
         /*Создаем фрейм в катором размеры екрана dimension2.getWidth(),dimension2.getHeight()*/
-        World  = new Scene(root,dimension.getWidth(),dimension.getHeight());
+        //World  = new Scene(root,dimension.getWidth(),dimension.getHeight());
+        init(true,0,0);
         
-        if(dimension.getWidth()/dimension.getHeight()==4/3)
+        if(DisplayFormat4x3)
         {
              //background = new Image(Constants.Pasha_Root_Bacground,dimension2.getWidth()
                    // ,dimension2.getHeight(),false,false);
         }
         else
         {
-             background = new Image(Constants.Pasha_Root_Background,dimension.getWidth()
-                ,dimension.getHeight(),false,false);
+//             background = new Image(Constants.Pasha_Root_Background,dimension.getWidth()
+//                ,dimension.getHeight(),false,false);
         }
         
         ImageView image = new ImageView();

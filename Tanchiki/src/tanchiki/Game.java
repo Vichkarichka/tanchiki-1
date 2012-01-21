@@ -30,8 +30,8 @@ public class Game extends Application
       и потока игровых вичислений(он вызывает метод GameRun)
        
          ! ! ! 
-         ! ! ! Здесь надо создавать все объекты классов которые наследуються от 
-         ! ! ! SuperScene
+         ! ! ! Здесь надо создавать все объекты классов которые  
+         ! ! ! наследуються от SuperScene
          ! ! !
     */
     private void init(Stage primaryStage)
@@ -40,6 +40,7 @@ public class Game extends Application
         Scenes.put("Registration", new Registration());
         
         primaryStage.setScene(Scenes.get("Menu").getScene());
+        primaryStage.setFullScreen(true);
         
         thread_logic = new Thread(new Runnable()
         {
@@ -83,10 +84,11 @@ public class Game extends Application
     // Конец программы
     public void stop()
     {
+        GameStop();
         Iterator<SuperScene> It = Scenes.values().iterator();
         for(int q=0; It.hasNext(); q++)
         {
-            It.next().stop();            
+            It.next().stop();
         }
     }
     
