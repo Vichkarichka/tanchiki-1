@@ -62,46 +62,44 @@ public class Menu extends SuperScene
              option = new Button("OPTION");   
              garage = new Button("GARAGE");
              System.out.println(width+" "+height);
-             connectAccount.setMinSize(150, 75);
+             connectAccount.setMinSize(width/9.33, height/14);
              connectAccount.setLayoutX(width/1.4);
              connectAccount.setLayoutY(height/5.25);
              root.getChildren().add(connectAccount);
              
-             startGame.setMinSize(150, 75);
+             startGame.setMinSize(width/9.33, height/14);
              startGame.setLayoutX(width/1.4);
              startGame.setLayoutY(height/3.5);
              startGame.setDisable(true);
              root.getChildren().add(startGame);
              
-             garage.setMinSize(150, 75);
+             garage.setMinSize(width/9.33, height/14);
              garage.setLayoutX(width/1.4);
              garage.setLayoutY(height/2.625);
              garage.setDisable(true);
              root.getChildren().add(garage);
              
-             loadGame.setMinSize(150, 75);
+             loadGame.setMinSize(width/9.33, height/14);
              loadGame.setLayoutX(width/1.4);
              loadGame.setLayoutY(height/2.1);
              loadGame.setDisable(true);
              root.getChildren().add(loadGame);
              
-             saveGame.setMinSize(150, 75);
+             saveGame.setMinSize(width/9.33, height/14);
              saveGame.setLayoutX(width/1.4);
              saveGame.setLayoutY(height/1.75);
              saveGame.setDisable(true);
              root.getChildren().add(saveGame);
              
-             option.setMinSize(150, 75);
+             option.setMinSize(width/9.33, height/14);
              option.setLayoutX(width/1.4);
              option.setLayoutY(height/1.5);
              root.getChildren().add(option);
              
-             exitGame.setMinSize(150, 75);
+             exitGame.setMinSize(width/9.33, height/14);
              exitGame.setLayoutX(width/1.4);
              exitGame.setLayoutY(height/1.3125);
              root.getChildren().add(exitGame);
-             
-             //PASHA
              
              ActionButton();
     }
