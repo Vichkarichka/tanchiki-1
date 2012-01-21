@@ -14,7 +14,7 @@ public class Game extends Application
     Thread                          thread_logic; // игровые вичисления               
     boolean                         flag_finished_thread_logic,
                                     flag_finished_thread_game; // если true-потоки
-    // работают, иначе они заканьчиваються (делают break;)
+                                    // работают, иначе они заканьчиваються (делают break;)
     
     // Итерация игрового времени
     private void GameRun()
@@ -40,7 +40,7 @@ public class Game extends Application
         Scenes.put("Registration", new Registration());
         
         primaryStage.setScene(Scenes.get("Menu").getScene());
-        primaryStage.setFullScreen(true);
+        //primaryStage.setFullScreen(true);
         
         thread_logic = new Thread(new Runnable()
         {
