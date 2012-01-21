@@ -12,8 +12,8 @@ import mathematic.Vec2;
 import tanchiki.Constants;
 
 public class Body extends SuperDetal{
-    LinkedList<Head>        head;
-    LinkedList<Caterpillar>    guseneci;
+    LinkedList<Head>            head;
+    LinkedList<Caterpillar>     guseneci;
     
     public Body(ObservableList<Node> list) {
         init(list);
@@ -40,6 +40,8 @@ public class Body extends SuperDetal{
         
         head        = new LinkedList<Head>();
         head.       addLast(new Head(list));
+        double buffer0 = position.getArcHeight();
+        double buffer1 = position.getHeight();
     }
     
     public void run() {
