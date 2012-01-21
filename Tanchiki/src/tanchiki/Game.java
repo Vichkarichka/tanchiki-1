@@ -40,7 +40,7 @@ public class Game extends Application
         Scenes.put("Registration", new Registration());
         
         primaryStage.setScene(Scenes.get("Menu").getScene());
-        //primaryStage.setFullScreen(true);
+        primaryStage.setFullScreen(true);
         
         thread_logic = new Thread(new Runnable()
         {
