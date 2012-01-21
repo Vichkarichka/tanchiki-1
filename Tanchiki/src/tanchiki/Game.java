@@ -19,7 +19,6 @@ public class Game extends Application
     // Итерация игрового времени
     private void GameRun()
     {
-        flag_finished_thread_game = true;
         while(flag_finished_thread_game)
         {
             
@@ -63,6 +62,7 @@ public class Game extends Application
     public void GameStart() 
     {
         flag_finished_thread_logic  = true;
+        flag_finished_thread_game   = true;
         thread_logic.start();
     }
     
@@ -70,6 +70,7 @@ public class Game extends Application
     public void GameStop() 
     {
         flag_finished_thread_logic  = false;
+        flag_finished_thread_game   = false;
     }
 
     // Начало программы
