@@ -101,6 +101,8 @@ public class Menu extends SuperScene
              exitGame.setLayoutY(height/1.3125);
              root.getChildren().add(exitGame);
              
+             //PASHA
+             
              ActionButton();
     }
     /*в етом методе я предаю действия кнопкам*/
