@@ -32,6 +32,7 @@ public class Menu extends SuperScene
         // создаем fullScreen фрейм, (0,0) игнорируем размеры окна.
         init(true,0,0);
         
+        System.out.println("Height="+height+"\nWidth="+width);
         // проверка формата экрана
         if(DisplayFormat4x3)
         {
