@@ -29,13 +29,10 @@ public class Menu extends SuperScene
 
     public Menu()
     {
-        /*Возвращаем размер екрана*/
-        //dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        //root = new Group();
-        /*Создаем фрейм в катором размеры екрана dimension2.getWidth(),dimension2.getHeight()*/
-        //World  = new Scene(root,dimension.getWidth(),dimension.getHeight());
+        // создаем fullScreen фрейм, (0,0) игнорируем размеры окна.
         init(true,0,0);
         
+        // проверка формата экрана
         if(DisplayFormat4x3)
         {
              //background = new Image(Constants.Pasha_Root_Bacground,dimension2.getWidth()

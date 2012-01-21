@@ -59,7 +59,6 @@ public class Registration extends SuperScene
 
     public Registration()
     {
-        root = new Group();
         init(true,0,0);
 
         image = new ImageView(new Image(Constants.Pasha_Root_Background_Registration,
