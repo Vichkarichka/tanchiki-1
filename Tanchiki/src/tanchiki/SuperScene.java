@@ -1,5 +1,6 @@
 package tanchiki;
 
+import java.awt.Toolkit;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -9,21 +10,32 @@ import javafx.scene.paint.Color;
 
 abstract public class SuperScene
 {
-    private Scene           World;  
-    LettersPane             lettersPane;  // устроство клавиатуры
-    Group                   root;         // ...
+    protected Scene         World;  
+    protected LettersPane   lettersPane;  // устроство клавиатуры
+    protected Group         root;         // ...
     
-    Thread                  thread_events; // обработка всех событий
+    protected Thread        thread_events; // обработка всех событий
+    protected int           height,
+                            width;
     
-    public void init(int width, int height, LettersPane lettersPane_buf)
+    // Задаем размер окна, и отлавливатель событий
+    public void init(boolean fullScreen, int width, int height, LettersPane lettersPane_buf)
     {
-        root  = new Group();
+        this.height = height;
+        this.width  = width;
+        root        = new Group();
         // создаем объект класса, который отлавливает события
         lettersPane = lettersPane_buf;
         // добавляем этот объект к остальным компонентам сцены
         root.getChildren().add(lettersPane);
+                
+        if(fullScreen)
+        {
+            this.width   = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+            this.height  = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+        }
         
-        World = new Scene(root, width, height, Color.BLACK);
+        World = new Scene(root, this.width, this.height, Color.BLACK);
 
         // создаем поток для вылавливания событий
         thread_events = new Thread(new Runnable()
@@ -34,6 +46,21 @@ abstract public class SuperScene
             }
         });
         thread_events.start();
+    }
+    // Задаем размер окна
+    public void init(boolean fullScreen, int width, int height)
+    {
+        this.height = height;
+        this.width  = width;
+        root        = new Group();        
+        
+        if(fullScreen)
+        {
+            this.width   = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+            this.height  = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+        }
+        
+        World = new Scene(root, this.width, this.height, Color.BLACK);
     }
     
     public void stop()

@@ -3,7 +3,6 @@ package Frame;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -13,19 +12,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import tanchiki.Constants;
+import tanchiki.SuperScene;
 
-public class MyMenu extends Application 
+public class Menu extends SuperScene
 {
-    Group       root;
-    GridPane    paneButton;
-    Stage       primaryStage;
-
     Dimension   dimension;
     Image       background;
     Button      startGame,
@@ -36,25 +28,14 @@ public class MyMenu extends Application
                 garage,
                 connectAccount;
 
-   Scene scene;
-
-   
-    
-    
-    /*В этом методе мы создаем меню и делаем с ней все действия*/
-    public void init(Stage primaryStage)
-    {
-        this.primaryStage = primaryStage;
-        Menu();
-    }
-    public void Menu()
+    public Menu()
     {
         /*Возвращаем размер екрана*/
         dimension = Toolkit.getDefaultToolkit().getScreenSize();
         root = new Group();
         /*Создаем фрейм в катором размеры екрана dimension2.getWidth(),dimension2.getHeight()*/
-        scene  = new Scene(root,dimension.getWidth(),dimension.getHeight());
-        primaryStage.setScene(scene);
+        World  = new Scene(root,dimension.getWidth(),dimension.getHeight());
+        
         if(dimension.getWidth()/dimension.getHeight()==4/3)
         {
              //background = new Image(Constants.Pasha_Root_Bacground,dimension2.getWidth()
@@ -65,7 +46,7 @@ public class MyMenu extends Application
              background = new Image(Constants.Pasha_Root_Background,dimension.getWidth()
                 ,dimension.getHeight(),false,false);
         }
-        primaryStage.setFullScreen(true);     
+        
         ImageView image = new ImageView();
         image.setImage(background);   
         root.getChildren().add(image);    
@@ -73,10 +54,8 @@ public class MyMenu extends Application
         button();
     }
     /*В этом методе я создаю и розмещаю кнопки */
-    public void button()
-    {
-       
-          
+    private void button()
+    { 
      connectAccount = new Button("ACCOUNT");
           startGame = new Button("START");
            exitGame = new Button("EXIT");
@@ -135,7 +114,7 @@ public class MyMenu extends Application
 
                 public void handle(ActionEvent e)
                 {
-                    primaryStage.close();
+                    //primaryStage.close();
                 }
         });
         root.setOnKeyPressed(new EventHandler<KeyEvent>()
@@ -144,7 +123,7 @@ public class MyMenu extends Application
             {
                 if(e.getCode() == KeyCode.ESCAPE)
                 {
-                    primaryStage.close();
+                    //primaryStage.close();
                 }
             }
             
@@ -154,23 +133,8 @@ public class MyMenu extends Application
 
                 public void handle(ActionEvent e)
                 {
-                    new Registration(primaryStage);
+                    //new Registration(primaryStage);
                 }
         });
     }
-    public void start(Stage primaryStage)
-    {
-        this.primaryStage = primaryStage;
-        init(primaryStage);
-        primaryStage.show();
-        
-    }
-    
-    
-    
-    public static void main(String[] args)
-    {
-        launch(args);
-    }
-    
 }

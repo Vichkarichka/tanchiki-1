@@ -1,5 +1,6 @@
 package tanchiki;
 
+import Frame.Menu;
 import java.util.HashMap;
 import java.util.Iterator;
 import javafx.application.Application;
@@ -8,11 +9,11 @@ import javafx.stage.Stage;
 
 public class Game extends Application
 {
-    HashMap<String,Location>    Locations; // 
+    HashMap<String,SuperScene>      Locations; // 
     
-    static Thread           thread_logic; // игровые вичисления
+    Thread                          thread_logic; // игровые вичисления
                             
-    static boolean          flag_finished_thread_logic; // если true-потоки
+    boolean                         flag_finished_thread_logic; // если true-потоки
     // работают, иначе они заканьчиваються (делают break;)
     
     // Итерация игрового времени
@@ -25,8 +26,8 @@ public class Game extends Application
     // и потока игровых вичислений(он вызывает метод GameRun)
     private void init(Stage primaryStage)
     {        
-        Locations.put("default",new Location());
-        primaryStage.setScene(Locations.get("default").getScene());
+        Locations.put("Menu",new Menu());
+        primaryStage.setScene(Locations.get("Menu").getScene());
         
         thread_logic = new Thread(new Runnable()
         {
@@ -44,7 +45,7 @@ public class Game extends Application
     
     public Game() 
     {
-        Locations    = new HashMap<String,Location>();
+        Locations    = new HashMap<String,SuperScene>();
     }
     
     
@@ -71,15 +72,14 @@ public class Game extends Application
     // Конец программы
     public void stop()
     {
-        Iterator<Location> It = Locations.values().iterator();
+        Iterator<SuperScene> It = Locations.values().iterator();
         for(int q=0; It.hasNext(); q++)
         {
             It.next().stop();            
         }
     }
     
-    
-    
+
     public static void main(String[] args)
     { 
         launch(args); 

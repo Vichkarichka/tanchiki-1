@@ -16,7 +16,7 @@ public class Location extends SuperScene
         Tanks           = new LinkedList<Tank>();
         FireBalls       = new LinkedList<FireBall>();
         LettersPane     lettersPane = new LettersPane();
-        init(800, 600,  lettersPane);
+        init(false, 800, 600, lettersPane);
     }
     
     // Класс который обрабатывает события с клавиатуры
