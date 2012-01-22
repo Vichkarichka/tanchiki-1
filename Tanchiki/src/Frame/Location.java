@@ -38,26 +38,44 @@ public class Location extends SuperScene
         }
     }
     
+    public void testInit()
+    {
+        Tanks.add(new Tank(root.getChildren(),100,100));
+    }
     
-    
-    
-    
+
     
     // Класс который обрабатывает события с клавиатуры
-    public static class LettersPane extends SuperScene.LettersPane
+    public class LettersPane extends SuperScene.LettersPane
     {
         public LettersPane() 
         {           
             // Обработка событий клавиатуры
+            
             setOnKeyPressed(new EventHandler<KeyEvent>()
             {
                 public void handle(KeyEvent ke)
                 {
-                    switch(ke.getText())
+                    
+                    char buffer[] = ke.getText().toCharArray();
+                    
+                    for(int q=0; q<buffer.length; q++)
                     {
-                        case "s":
-                            System.out.println("s");
-                            break;
+                        switch(buffer[q])
+                        {
+                            case 'w':
+                                Tanks.getFirst().W();
+                                break;
+                            case 'a':
+                                Tanks.getFirst().A();
+                                break;
+                            case 's':
+                                Tanks.getFirst().S();
+                                break;
+                            case 'd':
+                                Tanks.getFirst().D();
+                                break;
+                        }
                     }
                 }
             });

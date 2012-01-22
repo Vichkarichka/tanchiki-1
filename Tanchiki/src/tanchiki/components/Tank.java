@@ -14,6 +14,12 @@ public class Tank
     
     LinkedList<FireBall>    FireBalls;
     
+    void init(ObservableList<Node> list) 
+    {
+        body        = new Body(list);
+        FireBalls   = new LinkedList<>();
+    }
+    
     // -------------------------------------- Constructors ------------------ //
     public Tank(ObservableList<Node> list, int x, int y) 
     {
@@ -21,13 +27,6 @@ public class Tank
         body.setPosition(x, y);
     }
     // -------------------------------------------------------------------------
-    
-    void init(ObservableList<Node> list) 
-    {
-        body        = new Body(list);
-        FireBalls   = new LinkedList<>();
-    }
-    
     
     // -------------------------------------- Game Functions ---------------- //
     public void fire() 
@@ -42,6 +41,35 @@ public class Tank
         {
             It.next().run();
         }
+    }
+    
+    public void W()
+    {
+        body.W();
+    }
+    public void A()
+    {
+        body.A();
+    }
+    public void S()
+    {
+        body.S();
+    }
+    public void D()
+    {
+        body.D();
+    }
+    public void Q()
+    {
+        
+    }
+    public void E()
+    {
+    
+    }
+    public void F()
+    {
+        
     }
     // -------------------------------------------------------------------------
 }

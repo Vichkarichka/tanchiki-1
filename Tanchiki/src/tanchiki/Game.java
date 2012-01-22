@@ -63,6 +63,7 @@ public class Game extends Application
     {   
         location = new Location(primaryStage,Scenes);
         location.setMessanger(messanger);
+        location.testInit();
         
         Scenes.put("Menu",new Menu(primaryStage,Scenes));
         Scenes.put("Registration", new Registration(primaryStage,Scenes));
@@ -73,7 +74,7 @@ public class Game extends Application
         Scenes.get("Registration").setMessanger(messanger);
         Scenes.get("Logo").setMessanger(messanger);
         
-        primaryStage.setScene(Scenes.get("Registration").getScene());
+        primaryStage.setScene(Scenes.get("Location0").getScene());
         primaryStage.setFullScreen(true);
         
         this.primaryStage = primaryStage;

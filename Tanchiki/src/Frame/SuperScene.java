@@ -125,7 +125,7 @@ abstract public class SuperScene
     
 
     // Класс который обрабатывает события с клавиатуры
-    abstract public static class LettersPane extends Region
+    abstract public class LettersPane extends Region
     {
         public LettersPane() 
         {           
