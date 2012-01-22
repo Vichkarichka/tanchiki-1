@@ -1,8 +1,10 @@
 package tanchiki;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 import tanchiki.components.FireBall;
 import tanchiki.components.Tank;
 
@@ -11,12 +13,12 @@ public class Location extends SuperScene
     LinkedList<Tank>        Tanks;
     LinkedList<FireBall>    FireBalls;
     
-    public Location()
+    public Location(Stage stage,HashMap<String,SuperScene> scenes)
     {
         Tanks           = new LinkedList<Tank>();
         FireBalls       = new LinkedList<FireBall>();
         LettersPane     lettersPane = new LettersPane();
-        init(false, 800, 600, lettersPane);
+        init(false, 800, 600, stage, scenes, lettersPane);
     }
     
     // Класс который обрабатывает события с клавиатуры

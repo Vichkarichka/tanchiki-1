@@ -7,7 +7,6 @@ import java.util.Iterator;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-
 public class Game extends Application
 {
     HashMap<String,SuperScene>      Scenes; // Map сцен, для удобной динамической смены
@@ -23,21 +22,12 @@ public class Game extends Application
     {
         if(messanger.isNew_message())
         {
-            String      message     = messanger.getText();
-            SuperScene  sceneBuffer = Scenes.get(message);
-            if(sceneBuffer != null)
-            {
-                // динамическая смена сцены
-                primaryStage.setScene(sceneBuffer.getScene());
-                return;
-            }
-            
-            // обработка остальных сообщений
+            String message = messanger.getText();
+
             switch(message)
             {
                 case "exit":
-//                    primaryStage = null;
-//                    stop();
+                    stop();
                     break;
             }
         }
@@ -69,8 +59,8 @@ public class Game extends Application
     */
     void init(Stage primaryStage)
     {   
-        Scenes.put("Menu",new Menu());
-        Scenes.put("Registration", new Registration());
+        Scenes.put("Menu",new Menu(primaryStage,Scenes));
+        Scenes.put("Registration", new Registration(primaryStage,Scenes));
         
         Scenes.get("Menu").setMessanger(messanger);
         Scenes.get("Registration").setMessanger(messanger);

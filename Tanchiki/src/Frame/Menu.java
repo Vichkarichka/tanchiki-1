@@ -3,6 +3,7 @@ package Frame;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
+import java.util.HashMap;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -12,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 import tanchiki.Constants;
 import tanchiki.SuperScene;
 
@@ -27,10 +29,10 @@ public class Menu extends SuperScene
                 garage,
                 connectAccount;
 
-    public Menu()
+    public Menu(Stage stage,HashMap<String,SuperScene> scenes)
     {
         // создаем fullScreen фрейм, (0,0) игнорируем размеры окна.
-        init(true,0,0);
+        init(true,0,0,stage,scenes);
         
         System.out.println("Height="+height+"\nWidth="+width);
         // проверка формата экрана
@@ -110,7 +112,6 @@ public class Menu extends SuperScene
         {
             public void handle(ActionEvent e)
             {
-                //primaryStage.close();
                 messanger.setText("exit");
             }
         });
@@ -120,7 +121,6 @@ public class Menu extends SuperScene
             {
                 if(e.getCode() == KeyCode.ESCAPE)
                 {
-                    //primaryStage.close();
                     messanger.setText("exit");
                 }
             }
@@ -128,9 +128,9 @@ public class Menu extends SuperScene
         connectAccount.setOnAction(new EventHandler<ActionEvent>()
         {
             public void handle(ActionEvent e)
-            {
-                //new Registration(primaryStage);
+            {                
                 messanger.setText("Registration");
+                updateScene("Registration");
             }
         });
     }

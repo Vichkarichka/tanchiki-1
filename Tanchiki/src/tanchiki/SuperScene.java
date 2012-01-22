@@ -1,12 +1,14 @@
 package tanchiki;
 
 import java.awt.Toolkit;
+import java.util.HashMap;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 abstract public class SuperScene
 {
@@ -19,11 +21,30 @@ abstract public class SuperScene
                             width;
     protected boolean       DisplayFormat4x3,
                             fullScreen;
-    protected Messanger     messanger;
+    protected Messanger                     messanger;
+    protected Stage                         primaryStage;
+    protected HashMap<String,SuperScene>    Scenes;
+    
+    // динамическая смена сцены
+    protected boolean updateScene(String sceneName)
+    {
+        SuperScene  sceneBuffer = Scenes.get(sceneName);
+        if(sceneBuffer != null)
+        {
+            // динамическая смена сцены
+            primaryStage.setScene(sceneBuffer.getScene());
+            return true;
+        }
+        return false;
+    }
     
     // Задаем размер окна, и отлавливатель событий
-    public void init(boolean fullScreen, int width, int height, LettersPane lettersPane_buf)
+    public void init(boolean fullScreen, int width, int height, 
+            Stage stage,HashMap<String,SuperScene> scenes, 
+            LettersPane lettersPane_buf)
     {
+        primaryStage    = stage;
+        Scenes          = scenes;
         this.fullScreen = fullScreen;
         this.height = height;
         this.width  = width;
@@ -55,8 +76,11 @@ abstract public class SuperScene
         thread_events.start();
     }
     // Задаем размер окна
-    public void init(boolean fullScreen, int width, int height)
+    public void init(boolean fullScreen, int width, int height, 
+            Stage stage,HashMap<String,SuperScene> scenes)
     {
+        primaryStage    = stage;
+        Scenes          = scenes;
         this.fullScreen = fullScreen;
         this.height = height;
         this.width  = width;
@@ -98,6 +122,7 @@ abstract public class SuperScene
         this.messanger = messanger;
     }
     
+
     // Класс который обрабатывает события с клавиатуры
     abstract public static class LettersPane extends Region
     {

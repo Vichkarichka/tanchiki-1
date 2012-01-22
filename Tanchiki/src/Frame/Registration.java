@@ -2,6 +2,7 @@ package Frame;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.HashMap;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
@@ -14,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import tanchiki.Constants;
 import tanchiki.SuperScene;
 
@@ -57,9 +59,9 @@ public class Registration extends SuperScene
             back;
 
 
-    public Registration()
+    public Registration(Stage stage,HashMap<String,SuperScene> scenes)
     {
-        init(true,0,0);
+        init(true,0,0,stage,scenes);
 
 //        image = new ImageView(new Image(Constants.Pasha_Root_Background_Registration,
 //                width,height,false,false));
