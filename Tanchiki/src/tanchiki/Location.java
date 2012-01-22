@@ -10,15 +10,17 @@ import tanchiki.components.Tank;
 
 public class Location extends SuperScene
 {
+    Map                     map;
     LinkedList<Tank>        Tanks;
     LinkedList<FireBall>    FireBalls;
     
     public Location(Stage stage,HashMap<String,SuperScene> scenes)
     {
+        map             = new Map(64, 36);
         Tanks           = new LinkedList<Tank>();
         FireBalls       = new LinkedList<FireBall>();
         LettersPane     lettersPane = new LettersPane();
-        init(false, 800, 600, stage, scenes, lettersPane);
+        init(true, 800, 600, stage, scenes, lettersPane);
     }
     
     // Класс который обрабатывает события с клавиатуры
