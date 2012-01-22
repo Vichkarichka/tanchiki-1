@@ -1,4 +1,4 @@
-package tanchiki;
+package tanchiki.components;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,7 +19,7 @@ public class Map
     int                             height,
                                     width;
     
-    Map(int width, int height)
+    public Map(int width, int height)
     {
         this.width  = width;
         this.height = height;

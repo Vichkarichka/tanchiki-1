@@ -1,5 +1,7 @@
 package tanchiki;
 
+import Frame.Logo;
+import Frame.SuperScene;
 import Frame.Menu;
 import Frame.Registration;
 import java.util.HashMap;
@@ -61,9 +63,11 @@ public class Game extends Application
     {   
         Scenes.put("Menu",new Menu(primaryStage,Scenes));
         Scenes.put("Registration", new Registration(primaryStage,Scenes));
+        Scenes.put("Logo", new Logo(primaryStage,Scenes));
         
         Scenes.get("Menu").setMessanger(messanger);
         Scenes.get("Registration").setMessanger(messanger);
+        Scenes.get("Logo").setMessanger(messanger);
         
         primaryStage.setScene(Scenes.get("Registration").getScene());
         primaryStage.setFullScreen(true);

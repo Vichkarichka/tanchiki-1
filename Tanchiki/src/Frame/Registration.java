@@ -17,7 +17,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import tanchiki.Constants;
-import tanchiki.SuperScene;
 
 /**
  *

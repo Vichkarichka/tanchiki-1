@@ -1,4 +1,4 @@
-package tanchiki;
+package Frame;
 
 import java.awt.Toolkit;
 import java.util.HashMap;
@@ -9,6 +9,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import tanchiki.Messanger;
 
 abstract public class SuperScene
 {
