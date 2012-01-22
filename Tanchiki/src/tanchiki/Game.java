@@ -1,9 +1,6 @@
 package tanchiki;
 
-import Frame.Logo;
-import Frame.SuperScene;
-import Frame.Menu;
-import Frame.Registration;
+import Frame.*;
 import java.util.HashMap;
 import java.util.Iterator;
 import javafx.application.Application;
@@ -17,7 +14,8 @@ public class Game extends Application
                                     flag_finished_thread_game; // если true-потоки
                                     // работают, иначе они заканьчиваються (делают break;)
     Messanger                       messanger; // передает сообщения от сцен сюда
-    Stage                           primaryStage = null;
+    Stage                           primaryStage;
+    Location                        location;
     
     // обработка сообщений из других сцен
     void messangerScanner()
@@ -43,6 +41,8 @@ public class Game extends Application
             // обработка сообщений из других сцен
             messangerScanner();
             
+            
+            location.run();
             // ...
             // ...
             // ...
@@ -61,9 +61,13 @@ public class Game extends Application
     */
     void init(Stage primaryStage)
     {   
+        location = new Location(primaryStage,Scenes);
+        location.setMessanger(messanger);
+        
         Scenes.put("Menu",new Menu(primaryStage,Scenes));
         Scenes.put("Registration", new Registration(primaryStage,Scenes));
         Scenes.put("Logo", new Logo(primaryStage,Scenes));
+        Scenes.put("Location0", location);
         
         Scenes.get("Menu").setMessanger(messanger);
         Scenes.get("Registration").setMessanger(messanger);
