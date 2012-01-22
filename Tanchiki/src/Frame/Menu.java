@@ -111,7 +111,7 @@ public class Menu extends SuperScene
             public void handle(ActionEvent e)
             {
                 //primaryStage.close();
-                
+                messanger.setText("exit");
             }
         });
         root.setOnKeyPressed(new EventHandler<KeyEvent>()
@@ -121,16 +121,16 @@ public class Menu extends SuperScene
                 if(e.getCode() == KeyCode.ESCAPE)
                 {
                     //primaryStage.close();
+                    messanger.setText("exit");
                 }
             }
-            
         });
         connectAccount.setOnAction(new EventHandler<ActionEvent>()
         {
-
             public void handle(ActionEvent e)
             {
                 //new Registration(primaryStage);
+                messanger.setText("Registration");
             }
         });
     }

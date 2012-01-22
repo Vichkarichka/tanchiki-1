@@ -15,15 +15,48 @@ public class Game extends Application
     boolean                         flag_finished_thread_logic,
                                     flag_finished_thread_game; // если true-потоки
                                     // работают, иначе они заканьчиваються (делают break;)
+    Messanger                       messanger; // передает сообщения от сцен сюда
+    Stage                           primaryStage = null;
+    
+    // обработка сообщений из других сцен
+    void messangerScanner()
+    {
+        if(messanger.isNew_message())
+        {
+            String      message     = messanger.getText();
+            SuperScene  sceneBuffer = Scenes.get(message);
+            if(sceneBuffer != null)
+            {
+                // динамическая смена сцены
+                primaryStage.setScene(sceneBuffer.getScene());
+                return;
+            }
+            
+            // обработка остальных сообщений
+            switch(message)
+            {
+                case "exit":
+//                    primaryStage = null;
+//                    stop();
+                    break;
+            }
+        }
+    }
     
     // Итерация игрового времени
-    private void GameRun()
+    void GameRun()
     {
         while(flag_finished_thread_game)
         {
+            // обработка сообщений из других сцен
+            messangerScanner();
             
+            // ...
+            // ...
+            // ...
         }
     }
+
     
     /*
       Инициализация фрейма, создание первое сцены, и потоков обработки событий
@@ -34,13 +67,18 @@ public class Game extends Application
          ! ! ! наследуються от SuperScene
          ! ! !
     */
-    private void init(Stage primaryStage)
-    {        
+    void init(Stage primaryStage)
+    {   
         Scenes.put("Menu",new Menu());
         Scenes.put("Registration", new Registration());
         
+        Scenes.get("Menu").setMessanger(messanger);
+        Scenes.get("Registration").setMessanger(messanger);
+        
         primaryStage.setScene(Scenes.get("Menu").getScene());
         primaryStage.setFullScreen(true);
+        
+        this.primaryStage = primaryStage;
         
         thread_logic = new Thread(new Runnable()
         {
@@ -52,11 +90,13 @@ public class Game extends Application
                 }
             }
         });
+        
     }
     
     public Game() 
     {
         Scenes    = new HashMap<String,SuperScene>();
+        messanger = new Messanger();
     }
     
     // Запуск потоков игры
@@ -79,17 +119,18 @@ public class Game extends Application
     {
         init(arg0);
         arg0.show();
+        GameStart();
     }
     
     // Конец программы
     public void stop()
     {
-        GameStop();
         Iterator<SuperScene> It = Scenes.values().iterator();
         for(int q=0; It.hasNext(); q++)
         {
             It.next().stop();
         }
+        GameStop();
     }
     
     public static void main(String[] args)

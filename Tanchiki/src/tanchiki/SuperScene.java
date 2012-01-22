@@ -19,6 +19,7 @@ abstract public class SuperScene
                             width;
     protected boolean       DisplayFormat4x3,
                             fullScreen;
+    protected Messanger     messanger;
     
     // Задаем размер окна, и отлавливатель событий
     public void init(boolean fullScreen, int width, int height, LettersPane lettersPane_buf)
@@ -92,6 +93,10 @@ abstract public class SuperScene
         return World;
     }
     
+    public void setMessanger(Messanger messanger)
+    {
+        this.messanger = messanger;
+    }
     
     // Класс который обрабатывает события с клавиатуры
     abstract public static class LettersPane extends Region

@@ -61,9 +61,9 @@ public class Registration extends SuperScene
     {
         init(true,0,0);
 
-        image = new ImageView(new Image(Constants.Pasha_Root_Background_Registration,
-                width,height,false,false));
-        root.getChildren().add(image);
+//        image = new ImageView(new Image(Constants.Pasha_Root_Background_Registration,
+//                width,height,false,false));
+//        root.getChildren().add(image);
         connectComponent();
         registrationComponent();
     }
