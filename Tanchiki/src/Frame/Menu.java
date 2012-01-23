@@ -31,9 +31,8 @@ public class Menu extends SuperScene
     public Menu(Stage stage,HashMap<String,SuperScene> scenes)
     {
         // создаем fullScreen фрейм, (0,0) игнорируем размеры окна.
-        init(true,0,0,stage,scenes);
+        init(true,0,0,stage,scenes,"D:/ramsstein.mp3");
         
-        System.out.println("Height="+height+"\nWidth="+width);
         // проверка формата экрана
         if(DisplayFormat4x3)
         {
