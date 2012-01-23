@@ -78,7 +78,7 @@ abstract public class SuperScene
     }
     // Задаем размер окна
     public void init(boolean fullScreen, int width, int height, 
-            Stage stage,HashMap<String,SuperScene> scenes)
+            Stage stage,HashMap<String,SuperScene> scenes,String musik)
     {
         primaryStage    = stage;
         Scenes          = scenes;
@@ -97,6 +97,9 @@ abstract public class SuperScene
         }
         
         World = new Scene(root, this.width, this.height, Color.BLACK);
+        /*----------------*/
+        Audio audio = new Audio(musik,root);
+        /*----------------*/
     }
     
     public void stop()
@@ -125,7 +128,7 @@ abstract public class SuperScene
     
 
     // Класс который обрабатывает события с клавиатуры
-    abstract public class LettersPane extends Region
+    abstract public static class LettersPane extends Region
     {
         public LettersPane() 
         {           
