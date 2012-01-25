@@ -11,7 +11,7 @@ public class Logo extends SuperScene
     public Logo(Stage stage,HashMap<String,SuperScene> scenes)
     {
         // создаем fullScreen фрейм, (0,0) игнорируем размеры окна.
-        init(true,0,0,stage,scenes);
+        init(true,0,0,stage,scenes,"D:/ramsstein.mp3");
         
         
         ImageView image = new ImageView(new Image("D:/ICO/Vetton/masseffectwallpaper.jpg",

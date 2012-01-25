@@ -1,5 +1,6 @@
 package tanchiki;
 
+import Registration.Registration;
 import Frame.*;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -69,12 +70,17 @@ public class Game extends Application
         Scenes.put("Registration", new Registration(primaryStage,Scenes));
         Scenes.put("Logo", new Logo(primaryStage,Scenes));
         Scenes.put("Location0", location);
+        Scenes.put("Option", new Option(primaryStage,Scenes));
+        Scenes.put("SelectionMap", new SelectionMap(primaryStage,Scenes));
         
+        
+        Scenes.get("SelectionMap").setMessanger(messanger);
+        Scenes.get("Option").setMessanger(messanger);
         Scenes.get("Menu").setMessanger(messanger);
         Scenes.get("Registration").setMessanger(messanger);
         Scenes.get("Logo").setMessanger(messanger);
         
-        primaryStage.setScene(Scenes.get("Location0").getScene());
+        primaryStage.setScene(Scenes.get("Registration").getScene());
         primaryStage.setFullScreen(true);
         
         this.primaryStage = primaryStage;
