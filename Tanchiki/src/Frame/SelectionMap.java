@@ -17,6 +17,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javax.sound.midi.SysexMessage;
+import tanchiki.Constants;
 
 
 public class SelectionMap extends SuperScene
@@ -33,7 +34,7 @@ public class SelectionMap extends SuperScene
         view = new ImageView[3];
         for (int i = 0; i < 3; i++)
         {
-            images[i] = new Image("D:/map_"+(i+1)+".jpg",width/1.75,height/1.3125,true,true);
+            images[i] = new Image(Constants.BAIZOR_DIRECT_ROOT+"img/map_"+(i+1)+".jpg",width/1.75,height/1.3125,true,true);
             view[i] = new ImageView(images[i]);
             System.out.println(view[i]);
         }

@@ -6,9 +6,10 @@ import java.util.LinkedList;
 import java.util.Iterator;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
+import tanchiki.DinamicObject;
 import tanchiki.tank_Components.Body;
 
-public class Tank 
+public class Tank extends DinamicObject
 {    
     Body                    body;
     
@@ -21,8 +22,9 @@ public class Tank
     }
     
     // -------------------------------------- Constructors ------------------ //
-    public Tank(ObservableList<Node> list, int x, int y) 
+    public Tank(ObservableList<Node> list, int index, float x, float y, float height, float width) 
     {
+        super(index, x, y, height, width);
         init(list);
         body.setPosition(x, y);
     }
@@ -36,11 +38,12 @@ public class Tank
     public void run() 
     { 
         body.run();
-        Iterator<FireBall> It = FireBalls.iterator();
-        for(int q=0; q<FireBalls.size(); q++)
-        {
-            It.next().run();
-        }
+        body.setPosition(pos.x, pos.y);
+//        Iterator<FireBall> It = FireBalls.iterator();
+//        for(int q=0; q<FireBalls.size(); q++)
+//        {
+//            It.next().run();
+//        }
     }
     
     public void W()

@@ -17,11 +17,11 @@ public class MySqlServer
         try
         {
             String drivername = "com.mysql.jdbc.Driver";
-            Class.forName(drivername);
+            //Class.forName(drivername);
             
-            connect = DriverManager.getConnection
-                    ("jdbc:mysql://localhost/new_schema","root","1111");
-            stmt = connect.createStatement();
+//            connect = DriverManager.getConnection
+//                    ("jdbc:mysql://localhost/new_schema","root","1111");
+//            stmt = connect.createStatement();
         }
         catch(Exception e)
         {

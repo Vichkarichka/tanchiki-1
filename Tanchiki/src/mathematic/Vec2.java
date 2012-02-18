@@ -1,92 +1,74 @@
 package mathematic;
 
 public class Vec2 {
-    private float x;
-    private float y;
-    
-    // -------------------------------------- Constructors ------------------ //
-    public Vec2() {
-        x = y = 0;
-    }
-    public Vec2(float x, float y) {
-        this.x = x;
-        this.y = y;
-    }
-    // -------------------------------------------------------------------------
-    
-    // -------------------------------------- Mathematic -------------------- //
-    public void Rotate(float radians){
-        x = (float) (x * Math.cos(radians) - y * Math.sin(radians));
-        y = (float) (x * Math.sin(radians) + y * Math.cos(radians));
-    }
-    public void setRotate(float radians) {
-        x = ((float)Math.cos(radians));
-        y = ((float)Math.sin(radians));
-    }
-    public void RotateAxis(float radians, Vec2 axis)
-    {
-        minus(axis);
-        Rotate(radians);
-        plus(axis);
-    }
-    public void setRotateAxis(float radians, Vec2 axis)
-    {
-        minus(axis);
-        setRotate(radians);
-        plus(axis);
-    }
-    public float length() {
-        return (float)Math.sqrt(x * x + y * y);
-    }
-    public void Normalise() {
-        float length = length();
-        x       /= length;
-        y       /= length;
-    }
-    public void plus(float plus) {
-        x += plus;
-        y += plus;
-    }
-    public void plus(float x, float y) {
-        this.x += x;
-        this.y += y;
-    }
-    public void plus(Vec2 Vector)
-    {
-        this.x += Vector.getX();
-        this.y += Vector.getY();
-    }
-    public void minus(float minus) {
-        x -= minus;
-        y -= minus;
-    }
-    public void minus(float x, float y) {
-        this.x -= x;
-        this.y -= y;
-    }
-    public void minus(Vec2 Vector)
-    {
-        this.x -= Vector.getX();
-        this.y -= Vector.getY();
-    }
-    public float getAlphaX() {
-        return x / (float)Math.sqrt(x * x + y * y) * 57.2957795130823f;
-    } 
-    public float getAlphaY() {
-        return y / (float)Math.sqrt(x * x + y * y) * 57.2957795130823f;
-    }
-    // -------------------------------------------------------------------------
-    
-    public float    getX() {
-        return x;
-    }
-    public void     setX(float x) {
-        this.x = x;
-    }
-    public float    getY() {
-        return y;
-    }
-    public void     setY(float y) {
-        this.y = y;
-    }
+	public float 		x,
+						y;
+	
+	public 			Vec2()
+	{
+		x = 0;
+		y = 0;
+	}
+	public 			Vec2(float x, float y)
+	{
+		this.x = x;
+		this.y = y;
+	}
+	public			Vec2(Vec2 vec)
+	{
+		x = vec.x;
+		y = vec.y;
+	}
+	public void		normalize()
+	{
+		float length = getVecLength();
+		x /= length;
+		y /= length;
+	}
+	public float	getVecLength()
+	{
+		return (float) Math.sqrt(D(x, 0) + D(y, 0));
+	}
+	public float	getVecLength(Vec2 vec)
+	{
+		return (float) Math.sqrt((float) D(x, vec.x) + D(y, vec.y));
+	}
+	public float 	D(float a, float b)
+	{
+		return a * a - 2 * a * b + b * b;
+	}
+	public double  	D(double a,  double  b)
+	{
+		return a * a - 2 * a * b + b * b;
+	}
+	public int    	D(int a,    int    b)
+	{
+		return a * a - 2 * a * b + b * b;
+	}
+
+	public void   	add(Vec2 vec)
+	{
+		x += vec.x;
+		y += vec.y;
+	}
+	public void   	add(float x, float y)
+	{
+		this.x += x;
+		this.y += y;
+	}
+	public void		minus(Vec2 vec)
+	{
+		x -= vec.x;
+		y -= vec.y;
+	}
+	public void		multy(float decimal)
+	{
+		x *= decimal;
+		y *= decimal;
+	}
+	public void 	divide(float decimal)
+	{
+		x /= decimal;
+		y /= decimal;
+	}
 }

@@ -40,7 +40,7 @@ public class Location extends SuperScene
     
     public void testInit()
     {
-        Tanks.add(new Tank(root.getChildren(),100,100));
+        Tanks.add(new Tank(root.getChildren(),0, 0.5f,0.5f,0.1f,0.1f));
     }
     
 

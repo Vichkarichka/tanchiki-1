@@ -23,12 +23,12 @@ class Audio
     public Audio(String media,Group root)
     {
         file = media;
-        musik = new Media("file:///" + file);
-        player = new MediaPlayer(musik);
-        this.media = new MediaView(player);
-        player.play();
-        player.setVolume(1.0);
-        root.getChildren().add(this.media);
+        //musik = new Media("file:///" + file);
+//        player = new MediaPlayer(musik);
+//        this.media = new MediaView(player);
+//        player.play();
+//        player.setVolume(1.0);
+//        root.getChildren().add(this.media);
     }
     
 }

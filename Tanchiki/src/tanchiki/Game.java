@@ -80,7 +80,7 @@ public class Game extends Application
         Scenes.get("Registration").setMessanger(messanger);
         Scenes.get("Logo").setMessanger(messanger);
         
-        primaryStage.setScene(Scenes.get("Registration").getScene());
+        primaryStage.setScene(Scenes.get("Location0").getScene());
         primaryStage.setFullScreen(true);
         
         this.primaryStage = primaryStage;
